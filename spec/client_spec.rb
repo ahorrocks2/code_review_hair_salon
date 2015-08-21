@@ -30,4 +30,14 @@ describe(Client) do
     end
   end
 
+  describe('#update') do
+    it('allow owner to update clients') do
+      test_client = Client.new({:name => 'Legolas', :id => nil, :stylist_id => 1})
+      test_client.save()
+      test_client.update({:name => 'Sauron', :id => nil, :stylist_id => 1})
+      expect(test_client.name()).to(eq('Sauron'))
+    end
+  end
+
+
 end

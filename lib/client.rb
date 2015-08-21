@@ -27,4 +27,11 @@ class Client
     self.name() == another_client.name() && self.stylist_id() == another_client.stylist_id()
   end
 
+  define_method(:update) do |attributes|
+    @name = attributes.fetch(:name, @name)
+    @id = self.id()
+    @stylist_id = attributes.fetch(:stylist_id, @stylist_id)
+    DB.exec("UPDATE clients SET name = '#{@name}' WHERE id = #{@id};")
+  end
+
 end
