@@ -35,6 +35,16 @@ describe('the stylist path', {:type =>:feature}) do
     click_button('Edit Stylist')
     expect(page).to have_content('Galadriel')
   end
+
+  it('allows owner to delete a stylist') do
+    visit('/stylists')
+    fill_in("stylist_name", :with => "Eowyn")
+    click_button('Add Stylist')
+    click_link('Eowyn')
+    click_button('Delete Stylist')
+    expect(page).to have_content('EpiSalon Stylists')
+  end
+
 end
 
 describe('the client path', {:type => :feature}) do

@@ -37,6 +37,13 @@ patch('/stylist/:id') do
   redirect('/stylists')
 end
 
+delete('/stylist/:id') do
+  @stylist = Stylist.find(params.fetch('id').to_i())
+  @stylist.delete()
+
+  redirect('/stylists')
+end
+
 get('/clients') do
   @clients = Client.all()
   erb(:clients)
