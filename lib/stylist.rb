@@ -49,5 +49,14 @@ class Stylist
     clients
   end
 
+  define_singleton_method(:find) do |stylist_id|
+    found_stylist = nil
+    Stylist.all().each() do |stylist|
+      if stylist.id().to_i() == stylist_id
+        found_stylist = stylist
+      end
+    end
+    found_stylist
+  end
 
 end

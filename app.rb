@@ -24,7 +24,19 @@ post('/stylists/add') do
   redirect('/stylists')
 end
 
+get('/stylist/:id') do
+  @stylist = Stylist.find(params.fetch('id').to_i())
+  erb(:stylist)
+end
+
 get('/clients') do
   @clients = Client.all()
   erb(:clients)
 end
+#
+# post('/clients/add') do
+#   name = params.fetch('client_name')
+#   client_stylist = params.fetch('client_stylist')
+#   stylist_id = Stylist.find(client_st)
+#   new_client = Client.new({:name => name, :id => nil, :stylist_id => })
+# end

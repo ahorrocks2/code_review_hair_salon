@@ -9,3 +9,9 @@
 <% else %>
   <p class="text-danger">Well this is awkward...</p>
 <% end %>
+
+<form action="/clients/add" method="post">
+  <input type="text" name="client_name" placeholder="Client's Name">
+  <input type="text" name="client_stylist" placeholder="Client's Stylist">
+  <button class="btn btn-warning" name="button">Add Client</button>
+</form>
