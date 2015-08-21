@@ -22,7 +22,7 @@ class Stylist
   end
 
   define_method(:==) do |another_stylist|
-    self.name == another_stylist.name
+    self.name() == another_stylist.name()
   end
 
 
