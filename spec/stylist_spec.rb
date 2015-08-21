@@ -30,4 +30,13 @@ describe(Stylist) do
     end
   end
 
+  describe('#update') do
+    it('allow owner to update stylists') do
+      test_stylist = Stylist.new({:name => 'Arwen', :id => nil})
+      test_stylist.save()
+      test_stylist.update({:name => 'Galadriel', :id => nil})
+      expect(test_stylist.name()).to(eq('Galadriel'))
+    end
+  end
+
 end
