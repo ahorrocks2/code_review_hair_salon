@@ -67,15 +67,18 @@ end
 
 patch('/client/:id') do
   name = params.fetch('new_name')
+  stylist = params.fetch('new_stylist')
+  result = DB.exec("SELECT * FROM stylists WHERE name = '#{stylist}';")
+  stylist_id = result.first().fetch('id').to_i()
   @client = Client.find(params.fetch('id').to_i())
-  @client.update({:name => name, :id => nil})
+  @client.update({:name => name, :id => nil, :stylist_id => stylist_id})
 
-  redirect('/stylists')
+  redirect('/clients')
 end
-
-delete('/stylist/:id') do
-  @stylist = Stylist.find(params.fetch('id').to_i())
-  @stylist.delete()
-
-  redirect('/stylists')
-end
+# 
+# delete('/stylist/:id') do
+#   @stylist = Stylist.find(params.fetch('id').to_i())
+#   @stylist.delete()
+#
+#   redirect('/stylists')
+# end
