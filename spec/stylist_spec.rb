@@ -1,4 +1,5 @@
 require('spec_helper')
+require('client')
 
 describe(Stylist) do
   describe('#name') do
@@ -47,6 +48,16 @@ describe(Stylist) do
       test_stylist2.save()
       test_stylist1.delete()
       expect(Stylist.all()).to(eq([test_stylist2]))
+    end
+  end
+
+  describe('#clients') do
+    it('returns the clients that belong to a given stylists id') do
+      test_stylist1 = Stylist.new({:name => 'Gimli', :id => nil})
+      test_stylist1.save()
+      test_client1 = Client.new({:name => 'Treebeard', :id => nil, :stylist_id => test_stylist1.id().to_i()})
+      test_client1.save()
+      expect(test_stylist1.clients()).to(eq([test_client1]))
     end
   end
 
