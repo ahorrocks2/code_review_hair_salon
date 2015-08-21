@@ -10,3 +10,8 @@
 <% else %>
   <p class="text-danger">It's Hiring Time!</p>
 <% end %>
+
+<form action="/stylists/add" method="post">
+  <input type="text" name="stylist_name" placeholder="Stylist's Name">
+  <button class="btn btn-warning" name="button">Add Stylist</button>
+</form>

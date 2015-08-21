@@ -16,6 +16,14 @@ get('/stylists') do
   erb(:stylists)
 end
 
+post('/stylists/add') do
+  name = params.fetch('stylist_name')
+  new_stylist = Stylist.new({:name => name, :id => nil})
+  new_stylist.save()
+
+  redirect('/stylists')
+end
+
 get('/clients') do
   @clients = Client.all()
   erb(:clients)
