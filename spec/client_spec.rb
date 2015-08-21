@@ -50,4 +50,14 @@ describe(Client) do
     end
   end
 
+  describe('.find') do
+    it('return a client that matches the id') do
+      test_client1 = Client.new({:name => 'Boromir', :id => nil, :stylist_id => 1})
+      test_client1.save()
+      test_client2 = Client.new({:name => 'Faramir', :id => nil, :stylist_id => 1})
+      test_client2.save()
+      expect(Client.find(test_client1.id().to_i())).to(eq(test_client1))
+    end
+  end
+
 end

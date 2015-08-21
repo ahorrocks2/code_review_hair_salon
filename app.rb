@@ -59,3 +59,23 @@ post('/clients/add') do
 
   redirect('/clients')
 end
+
+get('/client/:id') do
+  @client = Client.find(params.fetch('id').to_i())
+  erb(:client)
+end
+
+patch('/client/:id') do
+  name = params.fetch('new_name')
+  @client = Client.find(params.fetch('id').to_i())
+  @client.update({:name => name, :id => nil})
+
+  redirect('/stylists')
+end
+
+delete('/stylist/:id') do
+  @stylist = Stylist.find(params.fetch('id').to_i())
+  @stylist.delete()
+
+  redirect('/stylists')
+end

@@ -37,4 +37,17 @@ class Client
   define_method(:delete) do
     DB.exec("DELETE FROM clients WHERE id = #{self.id()};")
   end
+
+  define_singleton_method(:find) do |client_id|
+    found_client = nil
+    Client.all().each() do |client|
+      if client.id().to_i() == client_id
+        found_client = client
+      end
+    end
+    found_client
+  end
+
+
+
 end
