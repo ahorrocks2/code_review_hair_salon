@@ -75,10 +75,10 @@ patch('/client/:id') do
 
   redirect('/clients')
 end
-# 
-# delete('/stylist/:id') do
-#   @stylist = Stylist.find(params.fetch('id').to_i())
-#   @stylist.delete()
-#
-#   redirect('/stylists')
-# end
+
+delete('/client/:id') do
+  @client = Client.find(params.fetch('id').to_i())
+  @client.delete()
+
+  redirect('/client')
+end

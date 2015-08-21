@@ -8,3 +8,10 @@
   <input name="new_stylist" type="text" placeholder="Change Client Stylist">
   <button type="submit" class="btn-danger">Edit Client</button>
 </form>
+
+
+<br>
+<form action="/client/<%= @client.id() %>" method="post">
+  <input name="_method" type="hidden" value="delete">
+  <button type="submit" class="btn-danger">Delete Client</button>
+</form>
