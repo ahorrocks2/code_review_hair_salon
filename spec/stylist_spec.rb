@@ -39,4 +39,15 @@ describe(Stylist) do
     end
   end
 
+  describe('#delete') do
+    it('allow owner to delete a stylist from the list') do
+      test_stylist1 = Stylist.new({:name => 'Boromir', :id => nil})
+      test_stylist1.save()
+      test_stylist2 = Stylist.new({:name => 'Faramir', :id => nil})
+      test_stylist2.save()
+      test_stylist1.delete()
+      expect(Stylist.all()).to(eq([test_stylist2]))
+    end
+  end
+
 end
