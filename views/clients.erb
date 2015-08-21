@@ -1,0 +1,11 @@
+<h1>EpiSalon Clients</h1>
+
+<% if @clients.any?() %>
+  <ul>
+    <% @clients.each() do |client| %>
+    <li><%= client.name() %></li>
+    <% end %>
+  </ul>
+<% else %>
+  <p class="text-danger">Well this is awkward...</p>
+<% end %>

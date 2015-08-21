@@ -1,0 +1,12 @@
+<h1>EpiSalon Stylists</h1>
+
+<% if @stylists.any?() %>
+  <p>Current Stylists:</p>
+  <ul>
+    <% @stylists.each() do |stylist| %>
+    <li><a href="/stylist/<%=stylist.id() %>"><%= stylist.name() %></a></li>
+    <% end %>
+  </ul>
+<% else %>
+  <p class="text-danger">It's Hiring Time!</p>
+<% end %>
