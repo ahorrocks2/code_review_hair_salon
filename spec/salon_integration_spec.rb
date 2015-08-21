@@ -25,6 +25,16 @@ describe('the stylist path', {:type =>:feature}) do
     click_link('Eowyn')
     expect(page).to have_content("Clients of Eowyn")
   end
+
+  it('allows owner to update a stylist') do
+    visit('/stylists')
+    fill_in("stylist_name", :with => "Eowyn")
+    click_button('Add Stylist')
+    click_link('Eowyn')
+    fill_in("new_name", :with => "Galadriel")
+    click_button('Edit Stylist')
+    expect(page).to have_content('Galadriel')
+  end
 end
 
 describe('the client path', {:type => :feature}) do

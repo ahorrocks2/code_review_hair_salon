@@ -29,6 +29,14 @@ get('/stylist/:id') do
   erb(:stylist)
 end
 
+patch('/stylist/:id') do
+  name = params.fetch('new_name')
+  @stylist = Stylist.find(params.fetch('id').to_i())
+  @stylist.update({:name => name, :id => nil})
+
+  redirect('/stylists')
+end
+
 get('/clients') do
   @clients = Client.all()
   erb(:clients)
