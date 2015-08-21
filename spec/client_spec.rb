@@ -8,4 +8,10 @@ describe(Client) do
     end
   end
 
+  describe('.all') do
+    it('return an empty list at first, all clients once clients saved') do
+      expect(Client.all()).to(eq([]))
+    end
+  end
+
 end
