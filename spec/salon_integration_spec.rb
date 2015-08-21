@@ -33,4 +33,15 @@ describe('the client path', {:type => :feature}) do
     click_on('View all Clients')
     expect(page).to have_content('EpiSalon Clients')
   end
+
+  it('allows owner to add a client') do
+    visit('/stylists')
+    fill_in('stylist_name', :with => 'Samwise')
+    click_button('Add Stylist')
+    visit('/clients')
+    fill_in('client_name', :with => 'Frodo')
+    fill_in('client_stylist', :with => 'Samwise')
+    click_button('Add Client')
+    expect(page).to have_content('Frodo')
+  end
 end

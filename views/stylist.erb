@@ -1,1 +1,12 @@
 <h1>Clients of <%=@stylist.name()%></h1>
+
+<% if @stylist.clients().any?() %>
+  <p>Clients:</p>
+  <ul>
+    <% @stylist.clients().each() do |client| %>
+    <li><%= client.name() %></a></li>
+    <% end %>
+  </ul>
+<% else %>
+  <p class="text-danger"><%= @stylist.name() %> needs to work on networking.</p>
+<% end %>

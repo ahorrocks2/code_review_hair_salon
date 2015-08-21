@@ -33,10 +33,14 @@ get('/clients') do
   @clients = Client.all()
   erb(:clients)
 end
-#
-# post('/clients/add') do
-#   name = params.fetch('client_name')
-#   client_stylist = params.fetch('client_stylist')
-#   stylist_id = Stylist.find(client_st)
-#   new_client = Client.new({:name => name, :id => nil, :stylist_id => })
-# end
+
+post('/clients/add') do
+  name = params.fetch('client_name')
+  client_stylist = params.fetch('client_stylist')
+  result = DB.exec("SELECT * FROM stylists WHERE name = '#{client_stylist}';")
+  stylist_id = result.first().fetch('id').to_i()
+  new_client = Client.new({:name => name, :id => nil, :stylist_id => stylist_id })
+  new_client.save()
+
+  redirect('/clients')
+end
