@@ -39,5 +39,15 @@ describe(Client) do
     end
   end
 
+  describe('#delete') do
+    it('allow the owner to delete a client') do
+      test_client1 = Client.new({:name => 'Legolas', :id => nil, :stylist_id => 1})
+      test_client1.save()
+      test_client2 = Client.new({:name => 'Sauron', :id => nil, :stylist_id => 1})
+      test_client2.save()
+      test_client2.delete()
+      expect(Client.all()).to(eq([test_client1]))
+    end
+  end
 
 end
